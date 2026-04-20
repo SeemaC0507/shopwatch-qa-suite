@@ -30,6 +30,10 @@ def test_create_then_fetch_product(api):
     response = session.post(f"{base_url}/products", json=new_product)
     assert response.status_code == 201
 
+    elapsed = response.elapsed.total_seconds() * 1000
+    assert elapsed < 3000, f"Response too slow: {elapsed:.0f}ms - limit is 3000ms"
+
+
     product = response.json()
     new_id = product["id"]
     response = session.get(f"{base_url}/products/{new_id}") 

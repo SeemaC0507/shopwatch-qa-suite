@@ -19,6 +19,9 @@ def test_get_product_returns_200(api):
     assert product["id"] == 1
     assert isinstance(product["title"],str)
 
+    elapsed = response.elapsed.total_seconds() * 1000
+    assert elapsed < 3000, f"Response too slow: {elapsed:.0f}ms - limit is 3000ms"
+
 def test_get_invalid_product_returns_404(api):
     session, base_url = api
     response = session.get(f"{base_url}/products/99999")
