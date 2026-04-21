@@ -6,3 +6,5 @@ venv/
 reports/
 .env
 .pytest_cache/
+report.html
+test_my_first.py
