@@ -3,13 +3,11 @@ def test_update_product(api):
     
     updated_product = {
         "title": "Updated Wireless Headphone",
-        "price": 59.99,
-        "description": "Now with better battery life",
-        "image": "https://fakestoreapi.com/img/placeholder.jpg",
-        "category": "electronics"
+        "body": "Noise cancelling headphones",
+        "userId": 1
     }
 
-    response = session.put(f"{base_url}/products/1", json=updated_product)
+    response = session.put(f"{base_url}/posts/1", json=updated_product)
     assert response.status_code == 200
 
     elapsed = response.elapsed.total_seconds() * 1000
